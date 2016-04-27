@@ -1,0 +1,145 @@
+DROP SEQUENCE Department_seq ; 
+create sequence Department_seq 
+start with 100 
+increment by 1 
+nomaxvalue 
+;
+DROP TRIGGER Department_PK_trig 
+; 
+
+create or replace trigger Department_PK_trig 
+before insert on Department
+for each row 
+begin 
+select Department_seq.nextval into :new.dept_id from dual; 
+end; 
+/
+
+DROP SEQUENCE History_seq ; 
+create sequence History_seq 
+start with 100 
+increment by 1 
+nomaxvalue 
+;
+DROP TRIGGER History_PK_trig 
+; 
+
+create or replace trigger History_PK_trig 
+before insert on History
+for each row 
+begin 
+select History_seq.nextval into :new.history_id from dual; 
+end; 
+/
+
+DROP SEQUENCE Parent_children_seq ; 
+create sequence Parent_children_seq 
+start with 100 
+increment by 1 
+nomaxvalue 
+;
+DROP TRIGGER Parent_children_PK_trig 
+; 
+
+create or replace trigger Parent_children_PK_trig 
+before insert on Parent_children
+for each row 
+begin 
+select Parent_children_seq.nextval into :new.parent_cn_id from dual; 
+end; 
+/
+
+DROP SEQUENCE Person_seq ; 
+create sequence Person_seq 
+start with 100 
+increment by 1 
+nomaxvalue 
+;
+DROP TRIGGER Person_PK_trig 
+; 
+
+create or replace trigger Person_PK_trig 
+before insert on Person
+for each row 
+begin 
+select Person_seq.nextval into :new.person_id from dual; 
+end; 
+/
+
+DROP SEQUENCE Project_seq ; 
+create sequence Project_seq 
+start with 100 
+increment by 1 
+nomaxvalue 
+;
+DROP TRIGGER Project_PK_trig 
+; 
+
+create or replace trigger Project_PK_trig 
+before insert on Project
+for each row 
+begin 
+select Project_seq.nextval into :new.project_id from dual; 
+end; 
+/
+
+DROP SEQUENCE Status_seq ; 
+create sequence Status_seq 
+start with 100 
+increment by 1 
+nomaxvalue 
+;
+DROP TRIGGER Status_PK_trig 
+; 
+
+create or replace trigger Status_PK_trig 
+before insert on Status
+for each row 
+begin 
+select Status_seq.nextval into :new.Status_ID from dual; 
+end; 
+/
+
+DROP SEQUENCE pjct_per_seq ; 
+create sequence pjct_per_seq 
+start with 100 
+increment by 1 
+nomaxvalue 
+;
+DROP TRIGGER pjct_per_PK_trig 
+; 
+
+create or replace trigger pjct_per_PK_trig 
+before insert on pjct_per
+for each row 
+begin 
+select pjct_per_seq.nextval into :new.pp_id from dual; 
+end; 
+/
+
+DROP INDEX Person_person_id_FK_0 ;
+CREATE INDEX Person_person_id_FK_0 ON History(Person_person_id) ;
+DROP INDEX Project_project_id_FK_1 ;
+CREATE INDEX Project_project_id_FK_1 ON History(Project_project_id) ;
+DROP INDEX Status_Status_ID_FK_2 ;
+CREATE INDEX Status_Status_ID_FK_2 ON History(Status_Status_ID) ;
+DROP INDEX Person_person_id_FK_3 ;
+CREATE INDEX Person_person_id_FK_3 ON Parent_children(Person_person_id) ;
+DROP INDEX Person_person_id1_FK_4 ;
+CREATE INDEX Person_person_id1_FK_4 ON Parent_children(Person_person_id1) ;
+DROP INDEX Department_dept_id_FK_5 ;
+CREATE INDEX Department_dept_id_FK_5 ON Person(Department_dept_id) ;
+DROP INDEX Person_person_id_FK_6 ;
+CREATE INDEX Person_person_id_FK_6 ON Person(Person_person_id) ;
+DROP INDEX Project_project_id_FK_7 ;
+CREATE INDEX Project_project_id_FK_7 ON Person(Project_project_id) ;
+DROP INDEX Department_dept_id_FK_8 ;
+CREATE INDEX Department_dept_id_FK_8 ON Project(Department_dept_id) ;
+DROP INDEX Project_project_id_FK_9 ;
+CREATE INDEX Project_project_id_FK_9 ON Project(Project_project_id) ;
+DROP INDEX Status_Status_ID_FK_10 ;
+CREATE INDEX Status_Status_ID_FK_10 ON Project(Status_Status_ID) ;
+DROP INDEX Person_person_id_FK_11 ;
+CREATE INDEX Person_person_id_FK_11 ON pjct_per(Person_person_id) ;
+DROP INDEX Project_project_id_FK_12 ;
+CREATE INDEX Project_project_id_FK_12 ON pjct_per(Project_project_id) ;

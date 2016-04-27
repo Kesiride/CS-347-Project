@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="cs347" id="E6649B63-91FA-DF67-987A-C5722DEABC14" version="3.5">
+<createdBy>pcannata</createdBy>
+<createdTime>2016-02-19 02:24:33 UTC</createdTime>
+<ownerDesignName>Company Conceptual Model</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>E6649B63-91FA-DF67-987A-C5722DEABC14</designId>
+</OSDM_Design>
